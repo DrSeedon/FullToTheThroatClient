@@ -19,6 +19,10 @@ public class UIManager : Singleton<UIManager>
     public GameObject sendMessageUI;
     public TMP_InputField messageTextField;
     
+    public TMP_InputField foodNameInputField;
+    public TMP_InputField foodCountInputField;
+    
+    
     
     public void ButtonClickConnectClient()
     {
@@ -36,6 +40,7 @@ public class UIManager : Singleton<UIManager>
     public void ButtonClickSendMessage()
     {
         SendMessageText();
+        SendFoodDataJson();
     }
 
     public void BackToMain()
@@ -61,6 +66,20 @@ public class UIManager : Singleton<UIManager>
     {
         Message message = Message.Create(MessageSendMode.Reliable, (ushort) ClientToServerId.message);
         message.AddString(messageTextField.text);
+        NetworkManager.Instance.Client.Send(message);
+    }
+    /// <summary>
+    /// Отправляем данные еды на сервер
+    /// </summary>
+    public void SendFoodDataJson()
+    {
+        FoodData foodData = new FoodData();
+        foodData.name = foodNameInputField.text;
+        foodData.count = Convert.ToInt32(foodCountInputField.text);
+        string jsonString = JsonUtility.ToJson(foodData, true);
+        
+        Message message = Message.Create(MessageSendMode.Reliable, (ushort) ClientToServerId.foodDataJson);
+        message.AddString(jsonString);
         NetworkManager.Instance.Client.Send(message);
     }
 }

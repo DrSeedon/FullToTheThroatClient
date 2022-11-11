@@ -4,13 +4,18 @@
     <list default="true" id="f1b0856f-8941-4763-b45c-f51b8217d220" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullToTheThroatClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullToTheThroatClient/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Networking/NetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Networking/NetworkManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/FoodData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/FoodData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/UIPanel.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -78,6 +83,7 @@
       <workItem from="1667446965018" duration="75000" />
       <workItem from="1667450524652" duration="11528000" />
       <workItem from="1667473258798" duration="1151000" />
+      <workItem from="1668183271508" duration="2379000" />
     </task>
     <servers />
   </component>

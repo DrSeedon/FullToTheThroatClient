@@ -75,7 +75,7 @@ public class UIManager : Singleton<UIManager>
     {
         FoodData foodData = new FoodData();
         foodData.name = foodNameInputField.text;
-        foodData.count = Convert.ToInt32(foodCountInputField.text);
+        foodData.price = Convert.ToInt32(foodCountInputField.text);
         string jsonString = JsonUtility.ToJson(foodData, true);
         
         Message message = Message.Create(MessageSendMode.Reliable, (ushort) ClientToServerId.foodDataJson);

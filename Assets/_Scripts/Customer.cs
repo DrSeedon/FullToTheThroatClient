@@ -10,7 +10,10 @@ public class Customer : MonoBehaviour
 
     public ushort Id { get; private set; }
     public bool IsLocal { get; private set; }
-    private string username;
+    
+    public List<Order> orders = new List<Order>();
+    public string name;
+    public string cardNUmber;
 
     private void OnDestroy()
     {
@@ -27,7 +30,7 @@ public class Customer : MonoBehaviour
         
         customer.name = $"Player {id} ({(string.IsNullOrEmpty(username) ? "Guest" : username)})";
         customer.Id = id;
-        customer.username = string.IsNullOrEmpty(username) ? $"Guest {id}" : username;
+        customer.name = string.IsNullOrEmpty(username) ? $"Guest {id}" : username;
 
         list.Add(id, customer);
     }

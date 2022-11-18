@@ -4,46 +4,41 @@ using Riptide;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Customer : MonoBehaviour
+public class Customer : Singleton<Customer>
 {
-    public static Dictionary<ushort, Customer> list = new Dictionary<ushort, Customer>();
-
-    public ushort Id { get; private set; }
-    public bool IsLocal { get; private set; }
-    
     public List<Order> orders = new List<Order>();
     public string name;
-    public string cardNUmber;
-
-    private void OnDestroy()
-    {
-        list.Remove(Id);
-    }
-
-    public static void Spawn(ushort id, string username)
-    {
-        Customer customer;
-        customer = Instantiate(ShopLogic.Instance.clientPrefab, Vector3.zero, Quaternion.identity)
-            .GetComponent<Customer>();
-        
-        customer.IsLocal = id == NetworkManager.Instance.Client.Id;
-        
-        customer.name = $"Player {id} ({(string.IsNullOrEmpty(username) ? "Guest" : username)})";
-        customer.Id = id;
-        customer.name = string.IsNullOrEmpty(username) ? $"Guest {id}" : username;
-
-        list.Add(id, customer);
-    }
-
+    public string cardNumber;
+    
+    public List<FoodData> foodDatas = new List<FoodData>();
     #region Messages
-/// <summary>
-/// Принять сообщение о спавне префаба клиента
-/// </summary>
-/// <param name="message"></param>
-    [MessageHandler((ushort) ServerToClientId.playerSpawned)]
+
+    /// <summary>
+    /// Принять сообщение о спавне префаба клиента
+    /// </summary>
+    /// <param name="message"></param>
+    [MessageHandler((ushort)ServerToClientId.playerSpawned)]
     private static void SpawnClient(Message message)
     {
-        Spawn(message.GetUShort(), message.GetString());
+        //Spawn(message.GetUShort(), message.GetString());
+    }
+
+    /// <summary>
+    /// Принять сообщение с едой
+    /// </summary>
+    /// <param name="message">Сообщение</param>
+    [MessageHandler((ushort)ServerToClientId.foodUpdate)]
+    private static void FoodDataJsonReceived(Message message)
+    {
+        List<FoodData> foodDatas = JsonUtility.FromJson<List<FoodData>>(message.GetString());
+        Instance.foodDatas = foodDatas;
+        foreach (var data in foodDatas)
+        {
+            LogHelper.Log(() => data.name);
+            LogHelper.Log(() => data.price);
+        }
+
+        Debug.Log("hui");
     }
 
     #endregion

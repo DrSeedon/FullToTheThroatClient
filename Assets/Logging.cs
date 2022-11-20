@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Events;
 
 public class Logging : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TMP_InputField LoginField;
+    public TMP_InputField PasswordField;
+    public UnityEvent LoggingEvent;
+    public string login;
+    public string passvord;
     void Start()
     {
         
@@ -14,5 +20,12 @@ public class Logging : MonoBehaviour
     void Update()
     {
         
+    }
+    public void Loggin()
+    {
+        if (LoginField.text == login && PasswordField.text == passvord)
+        {
+            LoggingEvent?.Invoke();
+        }
     }
 }

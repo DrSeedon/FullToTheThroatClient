@@ -11,52 +11,33 @@ public class UIManager : Singleton<UIManager>
 {
     [Header("Connect")] 
     
-    public GameObject connectUI;
-    public TMP_InputField usernameField;   
-    public TMP_InputField ipField;   
-    public TMP_InputField portField;   
+    public string usernameField;   
+    public string ipField;   
+    public string portField;   
     
-    public GameObject sendMessageUI;
-    public TMP_InputField messageTextField;
-    
-    public TMP_InputField foodNameInputField;
-    public TMP_InputField foodCountInputField;
-    
-    
-    
-    public void ButtonClickConnectClient()
+    private void Start()
     {
-        usernameField.interactable = false;
-        connectUI.SetActive(false);
-
-        NetworkManager.Instance.Connect(ipField.text, Convert.ToUInt16(portField.text));
+        ConnectClient();
     }
 
-    public void ConnectedMenu()
+    public void ConnectClient()
     {
-        sendMessageUI.SetActive(true);
+        NetworkManager.Instance.Connect(ipField, Convert.ToUInt16(portField));
     }
-    
+
     public void ButtonClickSendMessage()
     {
         SendMessageText();
         SendFoodDataJson();
     }
 
-    public void BackToMain()
-    {
-        usernameField.interactable = true;
-        connectUI.SetActive(true);
-        sendMessageUI.SetActive(false);
-    }
-    
     /// <summary>
     /// Отправляем данные на сервер
     /// </summary>
     public void SendName()
     {
         Message message = Message.Create(MessageSendMode.Reliable, (ushort) ClientToServerId.name);
-        message.AddString(usernameField.text);
+        message.AddString(usernameField);
         NetworkManager.Instance.Client.Send(message);
     }
     /// <summary>
@@ -65,7 +46,7 @@ public class UIManager : Singleton<UIManager>
     public void SendMessageText()
     {
         Message message = Message.Create(MessageSendMode.Reliable, (ushort) ClientToServerId.message);
-        message.AddString(messageTextField.text);
+        //message.AddString(messageTextField.text);
         NetworkManager.Instance.Client.Send(message);
     }
     /// <summary>
@@ -74,12 +55,13 @@ public class UIManager : Singleton<UIManager>
     public void SendFoodDataJson()
     {
         FoodData foodData = new FoodData();
-        foodData.name = foodNameInputField.text;
-        foodData.price = Convert.ToInt32(foodCountInputField.text);
+        //foodData.name = foodNameInputField.text;
+        //foodData.price = Convert.ToInt32(foodCountInputField.text);
         string jsonString = JsonUtility.ToJson(foodData, true);
         
         Message message = Message.Create(MessageSendMode.Reliable, (ushort) ClientToServerId.foodDataJson);
         message.AddString(jsonString);
         NetworkManager.Instance.Client.Send(message);
     }
+    
 }

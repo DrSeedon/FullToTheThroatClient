@@ -6,6 +6,7 @@ using UnityEngine;
 public enum ServerToClientId : ushort
 {
     playerSpawned = 1,
+    foodUpdate = 2,
 }
 
 public enum ClientToServerId : ushort
@@ -56,23 +57,22 @@ public class NetworkManager : Singleton<NetworkManager>
     /// <param name="e"></param>
     private void DidConnect(object sender, EventArgs e)
     {
-        UIManager.Instance.ConnectedMenu();
         UIManager.Instance.SendName();
     }
 
     private void FailedToConnect(object sender, EventArgs e)
     {
-        UIManager.Instance.BackToMain();
+        
     }
 
     private void CustomerLeft(object sender, ClientDisconnectedEventArgs e)
     {
-        Destroy(Customer.list[e.Id].gameObject);
+        
     }
 
     private void DidDisconnect(object sender, EventArgs e)
     {
-        UIManager.Instance.BackToMain();
+        
     }
 
     #endregion

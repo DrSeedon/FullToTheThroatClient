@@ -14,6 +14,12 @@ public static class JsonHelper
         return wrapper.Items;
     }
 
+    public static List<T> FromJsonList<T>(string json)
+    {
+        WrapperList<T> wrapper = JsonUtility.FromJson<WrapperList<T>>(json);
+        return wrapper.Items;
+    }
+
     public static string ToJson<T>(T[] array)
     {
         Wrapper<T> wrapper = new Wrapper<T>();
@@ -28,10 +34,24 @@ public static class JsonHelper
         return JsonUtility.ToJson(wrapper, prettyPrint);
     }
 
+    public static string ToJson<T>(List<T> array, bool prettyPrint)
+    {
+        WrapperList<T> wrapper = new WrapperList<T>();
+        wrapper.Items = array;
+        return JsonUtility.ToJson(wrapper, prettyPrint);
+    }
+
+
     [Serializable]
     private class Wrapper<T>
     {
         public T[] Items;
+    }
+
+    [Serializable]
+    private class WrapperList<T>
+    {
+        public List<T> Items;
     }
 
     public static string fixJson(string value)

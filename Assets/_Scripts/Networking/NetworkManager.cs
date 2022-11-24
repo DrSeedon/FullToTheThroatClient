@@ -7,6 +7,7 @@ public enum ServerToClientId : ushort
 {
     playerSpawned = 1,
     foodUpdate = 2,
+    foodReady = 3,
 }
 
 public enum ClientToServerId : ushort

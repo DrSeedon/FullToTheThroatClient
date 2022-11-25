@@ -14,6 +14,16 @@ public class OrderRow
     public FoodData foodData = new FoodData();
     public int count;
     public int totalPriceRow;
+
+    public OrderRow(FoodData data, int count)
+    {
+        foodData = data;
+        this.count = count;
+    }
+    
+    public OrderRow()
+    {
+    }
 }
 
 [Serializable]

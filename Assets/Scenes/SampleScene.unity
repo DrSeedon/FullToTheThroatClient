@@ -1693,7 +1693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &818252394
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1879,6 +1879,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodData: []
+  order:
+    orderRows: []
+    totalPrice: 0
+    numberOrder: 0
+    isReady: 0
   foodDataBasket: []
   gameObjectsBasket: []
   prefabDataElement: {fileID: 220978592}
@@ -6145,7 +6150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1814644457
 RectTransform:
   m_ObjectHideFlags: 0

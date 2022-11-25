@@ -26,6 +26,11 @@ public class NetworkManager : Singleton<NetworkManager>
 
     private void Start()
     {
+        
+    }
+
+    public void Connect()
+    {
         RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
         Client = new Client();
         Client.Connected += DidConnect;

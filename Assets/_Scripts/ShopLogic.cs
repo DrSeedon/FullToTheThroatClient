@@ -8,6 +8,7 @@ using UnityEngine;
 public class ShopLogic : Singleton<ShopLogic>
 {
     public List<FoodData> foodData = new List<FoodData>();
+    public Order order = new Order();
     
     public List<FoodData> foodDataBasket = new List<FoodData>();
     public List<GameObject> gameObjectsBasket = new List<GameObject>();
@@ -44,12 +45,45 @@ public class ShopLogic : Singleton<ShopLogic>
 
     public void AddToBasket(FoodData data)
     {
+        bool isExist = false;
+        foreach (var orderRow in order.orderRows)
+        {
+            if (orderRow.foodData == data)
+            {
+                isExist = true;
+                orderRow.count++;
+
+            }
+        }
+
+        if (!isExist)
+        {
+            order.orderRows.Add(new OrderRow(data, 1));
+        }
+            
+        
         foodDataBasket.Add(data);
         UpdateBasket();
     }
 
     public void RemoveFromBasket(FoodData data)
     {
+        foreach (var orderRow in order.orderRows)
+        {
+            if (orderRow.foodData == data)
+            {
+                if (orderRow.count <= 0)
+                {
+                    order.orderRows.Remove(orderRow);
+                }
+                else
+                {
+                    orderRow.count--;
+                }
+            }
+        }
+        
+        
         foodDataBasket.Remove(data);
         UpdateBasket();
     }

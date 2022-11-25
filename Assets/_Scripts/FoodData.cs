@@ -33,4 +33,5 @@ public class Order
     public int totalPrice;
     public int numberOrder;
     public bool isReady = false;
+    public ushort idClient;
 }

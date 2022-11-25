@@ -22,7 +22,7 @@ public class UIManager : Singleton<UIManager>
 
     public void ConnectClient()
     {
-        NetworkManager.Instance.Connect(ipField, Convert.ToUInt16(portField));
+        //NetworkManager.Instance.Connect(ipField, Convert.ToUInt16(portField));
     }
 
     public void ButtonClickSendMessage()

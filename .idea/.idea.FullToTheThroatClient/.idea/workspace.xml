@@ -3,10 +3,65 @@
   <component name="ChangeListManager">
     <list default="true" id="f1b0856f-8941-4763-b45c-f51b8217d220" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullToTheThroatClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullToTheThroatClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ellipse 7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ellipse 7.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoodConteiner 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoodConteiner 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoodConteiner.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoodConteiner.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoodConteinerBusket.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoodConteinerBusket.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoodElement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoodElement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 5.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 6.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 7.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 8.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Frame 9.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logging.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logging.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/1f9e836af3570657baf6aacb5fba5712.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/1f9e836af3570657baf6aacb5fba5712.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/201-2018453_our-menus-food-menu-icon-png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/201-2018453_our-menus-food-menu-icon-png.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/247-2471166_restaurant-icon-free-download-png-and-menu-ristorante.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/247-2471166_restaurant-icon-free-download-png-and-menu-ristorante.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/img_519969.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/img_519969.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/kisspng-arrow-computer-icons-clip-art-5ae5b286b58424.8475250015250028867435.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/kisspng-arrow-computer-icons-clip-art-5ae5b286b58424.8475250015250028867435.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/png-credit-card-computer-icons-debit-card-credit-card-text-rectangle-payment-logo-clipart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/png-credit-card-computer-icons-debit-card-credit-card-text-rectangle-payment-logo-clipart.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/Активная кнопка В корзину.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/Активная кнопка В корзину.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/Вход (активность при нажатии).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/Вход (активность при нажатии).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/Корзинка (с заказом).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Design/Корзинка (с заказом).png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Customer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/FoodData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/FoodData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Networking/NetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Networking/NetworkManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/ShopLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/ShopLogic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/UIPanelsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/UIPanelsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Основная краткая вариация 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Основная краткая вариация 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Оформить заказ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Оформить заказ.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Оформление.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Оформление.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/белая корзина 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/белая корзина 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/стрелка для шапки.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/стрелка для шапки.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +69,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/FoodElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -60,10 +115,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="13548">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="13548" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -85,7 +140,7 @@
       <workItem from="1668183271508" duration="2379000" />
       <workItem from="1668769933359" duration="4526000" />
       <workItem from="1669282345131" duration="6792000" />
-      <workItem from="1669346147677" duration="1147000" />
+      <workItem from="1669346147677" duration="8657000" />
     </task>
     <servers />
   </component>

@@ -18,11 +18,8 @@ public class Customer : Singleton<Customer>
     [MessageHandler((ushort)ServerToClientId.foodReady)]
     private static void FoodReady(Message message)
     {
-        List<FoodData> foodDatas = JsonHelper.FromJsonList<FoodData>(message.GetString());
-
-        if (ShopLogic.Instance.foodDataBasket == foodDatas)
-            ShopLogic.Instance.readyText.text = "ГОТОВ";
-
+        ShopLogic.Instance.readyText.text = "ГОТОВ";
+        ShopLogic.Instance.payButton.interactable = true;
     }
 
     /// <summary>

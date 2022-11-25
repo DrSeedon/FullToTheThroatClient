@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
+
 /// <summary>
 /// Менеджер UI Панелей
 /// </summary>
 public class UIPanelsManager : MonoBehaviour
 {
     public List<UIPanel> UIPanels;
+    public UnityEvent onStart;
+    
     /// <summary>
     /// Привязать менеджер к каждой панели
     /// </summary>
@@ -18,6 +22,7 @@ public class UIPanelsManager : MonoBehaviour
         {
             uiPanel.uiPanelsManager = this;
         }
+        onStart?.Invoke();
     }
 /// <summary>
 /// Выключить все панели

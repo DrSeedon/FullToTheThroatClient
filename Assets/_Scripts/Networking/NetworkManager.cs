@@ -1,7 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Riptide;
 using Riptide.Utils;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum ServerToClientId : ushort
 {
@@ -24,12 +28,12 @@ public class NetworkManager : Singleton<NetworkManager>
     public string ip;
     public ushort port;
 
-    private void Start()
-    {
-        
-    }
+    public TMP_Text statusText;
 
-    public void Connect()
+    public UnityEvent onConnected;
+    public UnityEvent onDisconnected;
+    
+    private void Start()
     {
         RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
         Client = new Client();
@@ -37,6 +41,13 @@ public class NetworkManager : Singleton<NetworkManager>
         Client.ConnectionFailed += FailedToConnect;
         Client.ClientDisconnected += CustomerLeft;
         Client.Disconnected += DidDisconnect;
+        Connect();
+    }
+
+    public void Connect()
+    {
+        Client.Connect($"{ip}:{port}");
+        statusText.text += "Connecting...\n";
     }
 
     private void FixedUpdate()
@@ -49,11 +60,6 @@ public class NetworkManager : Singleton<NetworkManager>
         Client.Disconnect();
     }
 
-    public void Connect(string _ip, ushort _port)
-    {
-        Client.Connect($"{_ip}:{_port}");
-    }
-
     #region Event
 
     /// <summary>
@@ -64,11 +70,14 @@ public class NetworkManager : Singleton<NetworkManager>
     private void DidConnect(object sender, EventArgs e)
     {
         UIManager.Instance.SendName();
+        statusText.text += "Connected\n";
+        onConnected?.Invoke();
     }
 
     private void FailedToConnect(object sender, EventArgs e)
     {
-        
+        statusText.text += "Failed To Connect\n";
+        TryConnect();
     }
 
     private void CustomerLeft(object sender, ClientDisconnectedEventArgs e)
@@ -78,8 +87,15 @@ public class NetworkManager : Singleton<NetworkManager>
 
     private void DidDisconnect(object sender, EventArgs e)
     {
-        
+        statusText.text += "Did Disconnect\n";
+        onDisconnected?.Invoke();
+        TryConnect();
     }
 
     #endregion
+
+    private void TryConnect()
+    {
+        Connect();
+    }
 }

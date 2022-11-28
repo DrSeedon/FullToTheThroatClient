@@ -12,6 +12,8 @@ public enum ServerToClientId : ushort
     playerSpawned = 1,
     foodUpdate = 2,
     foodReady = 3,
+    loggingResponse = 4,
+    orderNumberResponse = 5,
 }
 
 public enum ClientToServerId : ushort
@@ -19,6 +21,7 @@ public enum ClientToServerId : ushort
     name = 1,
     message = 2,
     foodDataJson = 3,
+    loggingRequest = 4,
 }
 
 public class NetworkManager : Singleton<NetworkManager>
@@ -41,11 +44,17 @@ public class NetworkManager : Singleton<NetworkManager>
         Client.ConnectionFailed += FailedToConnect;
         Client.ClientDisconnected += CustomerLeft;
         Client.Disconnected += DidDisconnect;
+    }
+
+    public void Starting()
+    {
         Connect();
     }
 
     public void Connect()
     {
+        ip = DataManager.Instance.saveData.ip;
+        port = DataManager.Instance.saveData.port;
         Client.Connect($"{ip}:{port}");
         statusText.text += "Connecting...\n";
     }
@@ -60,6 +69,17 @@ public class NetworkManager : Singleton<NetworkManager>
         Client.Disconnect();
     }
 
+    private void OnDestroy()
+    {
+        Client.Disconnect();
+    }
+
+    private void OnDisable()
+    {
+        Client.Disconnect();
+    }
+
+
     #region Event
 
     /// <summary>
@@ -69,9 +89,10 @@ public class NetworkManager : Singleton<NetworkManager>
     /// <param name="e"></param>
     private void DidConnect(object sender, EventArgs e)
     {
-        UIManager.Instance.SendName();
+        //UIManager.Instance.SendName();
         statusText.text += "Connected\n";
         onConnected?.Invoke();
+        Client.Connection.CanTimeout = false;
     }
 
     private void FailedToConnect(object sender, EventArgs e)

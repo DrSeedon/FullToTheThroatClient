@@ -7,11 +7,6 @@ using UnityEngine;
 
 public class Customer : Singleton<Customer>
 {
-    public List<Order> orders = new List<Order>();
-    public string name;
-    public string cardNumber;
-
-    public List<FoodData> foodDatas = new List<FoodData>();
     #region Messages
 
     
@@ -19,6 +14,7 @@ public class Customer : Singleton<Customer>
     private static void FoodReady(Message message)
     {
         ShopLogic.Instance.readyText.text = "ГОТОВ";
+        ShopLogic.Instance.ClearBasket();
         ShopLogic.Instance.payButton.interactable = true;
     }
 
@@ -30,7 +26,6 @@ public class Customer : Singleton<Customer>
     private static void FoodDataJsonReceived(Message message)
     {
         List<FoodData> foodDatas = JsonHelper.FromJsonList<FoodData>(message.GetString());
-        Instance.foodDatas = foodDatas;
         ShopLogic.Instance.SetFood(foodDatas);
     }
 

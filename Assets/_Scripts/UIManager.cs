@@ -7,22 +7,30 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : StaticInstance<UIManager>
 {
     [Header("Connect")] 
     
-    public string usernameField;   
-    public string ipField;   
-    public string portField;   
+    public string usernameField;
+
+    public TMP_InputField ipInput;
+    public TMP_InputField portInput;
     
     private void Start()
     {
-        ConnectClient();
+        
+    }
+
+    public void ShowData()
+    {
+        ipInput.text = DataManager.Instance.saveData.ip;
+        portInput.text = DataManager.Instance.saveData.port.ToString();
     }
 
     public void ConnectClient()
     {
-        //NetworkManager.Instance.Connect(ipField, Convert.ToUInt16(portField));
+        DataManager.Instance.saveData.ip = ipInput.text;
+        DataManager.Instance.saveData.port = ushort.Parse(portInput.text);
     }
 
     public void ButtonClickSendMessage()

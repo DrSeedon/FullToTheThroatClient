@@ -24,7 +24,10 @@ public class ShopLogic : Singleton<ShopLogic>
     public GameObject parentDataElementBasket;
 
     public TMP_Text readyText;
+    public TMP_Text orderNumberText;
     public TMP_Text totalText;
+    public TMP_Text countBasketText;
+    public Button basketButton;
 
     public Button payButton;
 
@@ -142,7 +145,7 @@ public class ShopLogic : Singleton<ShopLogic>
         foodDataBasketGameObjects.Clear();
 
         CalculatePrises();
-
+        int count = 0;
         foreach (var orderRow in order.orderRows)
         {
             var obj = Instantiate(prefabDataElementBasket, parentDataElementBasket.transform);
@@ -150,6 +153,15 @@ public class ShopLogic : Singleton<ShopLogic>
             var dataElement = obj.GetComponent<BasketElement>();
             dataElement.SetData(orderRow.foodData, orderRow.count);
             foodDataBasketGameObjects.Add(obj);
+            count += orderRow.count;
+        }
+
+        countBasketText.text = count.ToString();
+        basketButton.interactable = true;
+        if (count == 0)
+        {
+            countBasketText.text = "";
+            basketButton.interactable = false;
         }
     }
 
@@ -164,5 +176,11 @@ public class ShopLogic : Singleton<ShopLogic>
         NetworkManager.Instance.Client.Send(message);
         payButton.interactable = false;
         readyText.text = "Ожидаение";
+    }
+
+    [MessageHandler((ushort) ServerToClientId.orderNumberResponse)]
+    private static void OrderNumberResponse(Message message)
+    {
+        Instance.orderNumberText.text = "Номер: " + message.GetInt();
     }
 }

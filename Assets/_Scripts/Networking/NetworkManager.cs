@@ -38,6 +38,7 @@ public class NetworkManager : Singleton<NetworkManager>
     
     private void Start()
     {
+        Message.MaxPayloadSize = 10000;
         RiptideLogger.Initialize(Debug.Log, Debug.Log, Debug.LogWarning, Debug.LogError, false);
         Client = new Client();
         Client.Connected += DidConnect;

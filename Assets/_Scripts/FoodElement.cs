@@ -9,9 +9,13 @@ public class FoodElement : MonoBehaviour
 {
     public TMP_Text titleText;
     public TMP_Text priceText;
+    public TMP_Text weightText;
+    public TMP_Text compositionText;
     public FoodData foodData;
     public Button addFood;
     public Button removeFood;
+
+    public RawImage rawImage;
 
     private void Start()
     {
@@ -39,5 +43,8 @@ public class FoodElement : MonoBehaviour
         this.foodData = data;
         titleText.text = data.name;
         priceText.text = data.price + " руб.";
+        weightText.text = data.weight + " грамм";
+        compositionText.text = "Состав: " + data.composition;
+        rawImage.texture = ImageStorage.Instance.textures[data.idImage];
     }
 }

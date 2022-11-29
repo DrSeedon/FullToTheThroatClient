@@ -14,6 +14,8 @@ public class BasketElement : MonoBehaviour
     public Button addFood;
     public Button removeFood;
 
+    public RawImage rawImage;
+
     private void Start()
     {
         if (addFood != null) addFood.onClick.AddListener(AddToBasket);
@@ -42,5 +44,6 @@ public class BasketElement : MonoBehaviour
         //priceText.text = data.price.ToString();
         countText.text = count.ToString();
         totalText.text = data.price * count + " руб.";
+        rawImage.texture = ImageStorage.Instance.textures[data.idImage];
     }
 }

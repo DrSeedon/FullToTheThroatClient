@@ -18,7 +18,7 @@ public class ShopLogic : Singleton<ShopLogic>
     public List<GameObject> foodDataBasketGameObjects = new List<GameObject>();
 
     public GameObject prefabDataElement;
-    public GameObject parentDataElement;
+    public List<GameObject> parentDataElement;
     
     public GameObject prefabDataElementBasket;
     public GameObject parentDataElementBasket;
@@ -64,7 +64,7 @@ public class ShopLogic : Singleton<ShopLogic>
         
         foreach (var data in foodData)
         {
-            var obj = Instantiate(prefabDataElement, parentDataElement.transform);
+            var obj = Instantiate(prefabDataElement, parentDataElement[data.idСategory].transform);
             obj.SetActive(true);
             var dataElement = obj.GetComponent<FoodElement>();
             dataElement.SetData(data);
@@ -173,6 +173,7 @@ public class ShopLogic : Singleton<ShopLogic>
         string jsonString = JsonUtility.ToJson(order, true);
         Message message = Message.Create(MessageSendMode.Reliable, (ushort) ClientToServerId.foodDataJson);
         message.AddString(jsonString);
+        
         NetworkManager.Instance.Client.Send(message);
         payButton.interactable = false;
         readyText.text = "Ожидаение";

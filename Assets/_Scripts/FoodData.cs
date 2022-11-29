@@ -7,6 +7,10 @@ public class FoodData
     public string name;
     public int price;
     public bool isAvailable = false;
+    public int idImage;
+    public string weight;
+    public string composition;
+    public int idСategory;
 }
 [Serializable]
 public class OrderRow

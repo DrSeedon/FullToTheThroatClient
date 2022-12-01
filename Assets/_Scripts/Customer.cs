@@ -14,6 +14,7 @@ public class Customer : Singleton<Customer>
     private static void FoodReady(Message message)
     {
         ShopLogic.Instance.readyText.text = "ГОТОВ";
+        ShopLogic.Instance.isOrderWait = false;
         ShopLogic.Instance.ClearBasket();
         ShopLogic.Instance.payButton.interactable = true;
     }
@@ -27,6 +28,9 @@ public class Customer : Singleton<Customer>
     {
         List<FoodData> foodDatas = JsonHelper.FromJsonList<FoodData>(message.GetString());
         ShopLogic.Instance.SetFood(foodDatas);
+
+        if (ShopLogic.Instance.isOrderWait)
+            ShopLogic.Instance.SendMessageOrderWait(true);
     }
 
     #endregion

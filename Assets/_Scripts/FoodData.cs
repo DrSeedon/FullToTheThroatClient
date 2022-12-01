@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class FoodData
 {
     public string name;
-    public int price;
+    public float price;
     public bool isAvailable = false;
     public int idImage;
     public string weight;
@@ -17,7 +17,7 @@ public class OrderRow
 {
     public FoodData foodData = new FoodData();
     public int count;
-    public int totalPriceRow;
+    public float totalPriceRow;
 
     public OrderRow(FoodData data, int count)
     {
@@ -34,7 +34,7 @@ public class OrderRow
 public class Order
 {
     public List<OrderRow> orderRows = new List<OrderRow>();
-    public int totalPrice;
+    public float totalPrice;
     public int numberOrder;
     public bool isReady = false;
     public ushort idClient;

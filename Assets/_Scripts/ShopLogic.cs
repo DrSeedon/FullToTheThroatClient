@@ -165,18 +165,25 @@ public class ShopLogic : Singleton<ShopLogic>
         }
     }
 
+    public bool isOrderWait = false;
     public void SendFoodDataJson()
     {
         if(order.orderRows.Count == 0)
             return;
-        
+        SendMessageOrderWait();
+        isOrderWait = true;
+        payButton.interactable = false;
+        readyText.text = "Ожидаение";
+    }
+
+    public void SendMessageOrderWait(bool isOld = false)
+    {
         string jsonString = JsonUtility.ToJson(order, true);
         Message message = Message.Create(MessageSendMode.Reliable, (ushort) ClientToServerId.foodDataJson);
         message.AddString(jsonString);
-        
+        message.AddBool(isOld);
+
         NetworkManager.Instance.Client.Send(message);
-        payButton.interactable = false;
-        readyText.text = "Ожидаение";
     }
 
     [MessageHandler((ushort) ServerToClientId.orderNumberResponse)]

@@ -13,10 +13,17 @@ public class Customer : Singleton<Customer>
     [MessageHandler((ushort)ServerToClientId.foodReady)]
     private static void FoodReady(Message message)
     {
-        ShopLogic.Instance.readyText.text = "ГОТОВ";
+        ShopLogic.Instance.readyText.text = "Заберите заказ";
+        ShopLogic.Instance.orderComplete?.Invoke();
         ShopLogic.Instance.isOrderWait = false;
-        ShopLogic.Instance.ClearBasket();
         ShopLogic.Instance.payButton.interactable = true;
+    }
+    
+[MessageHandler((ushort)ServerToClientId.issuedFood)]
+    private static void FoodIssued(Message message)
+    {
+        ShopLogic.Instance.orderIssued?.Invoke();
+        ShopLogic.Instance.ClearBasket();
     }
 
     /// <summary>

@@ -56,6 +56,7 @@ public class FoodElement : MonoBehaviour
         titleText.text = data.name;
         priceText.text = data.price + " руб.";
         weightText.text = data.weight;
+        if (countText != null) countText.text = ShopLogic.Instance.CountCalculate(foodData).ToString();
         compositionText.text = "Состав: " + data.composition;
         rawImage.texture = ImageStorage.Instance.textures[data.idImage];
     }

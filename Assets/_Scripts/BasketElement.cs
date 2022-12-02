@@ -40,10 +40,10 @@ public class BasketElement : MonoBehaviour
     public virtual void SetData(FoodData data, int count)
     {
         this.foodData = data;
-        titleText.text = data.name;
-        //priceText.text = data.price.ToString();
-        countText.text = count.ToString();
-        totalText.text = data.price * count + " руб.";
-        rawImage.texture = ImageStorage.Instance.textures[data.idImage];
+        if (titleText != null) titleText.text = data.name;
+        if (priceText != null) priceText.text = data.price + " руб.";
+        if (countText != null) countText.text = count.ToString();
+        if (totalText != null) totalText.text = data.price * count + " руб.";
+        if (rawImage != null) rawImage.texture = ImageStorage.Instance.textures[data.idImage];
     }
 }

@@ -5,6 +5,7 @@ using Riptide;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -16,16 +17,24 @@ public class ShopLogic : Singleton<ShopLogic>
     
     public List<FoodData> foodDataBasket = new List<FoodData>();
     public List<GameObject> foodDataBasketGameObjects = new List<GameObject>();
+    public List<GameObject> foodDataOrderGameObjects = new List<GameObject>();
 
     public GameObject prefabDataElement;
     public List<GameObject> parentDataElement;
     
     public GameObject prefabDataElementBasket;
     public GameObject parentDataElementBasket;
+    
+    public GameObject prefabDataElementOrder;
+    public GameObject parentDataElementOrder;
 
     public TMP_Text readyText;
+    public UnityEvent orderStart;
+    public UnityEvent orderComplete;
+    public UnityEvent orderIssued;
     public TMP_Text orderNumberText;
     public TMP_Text totalText;
+    public TMP_Text totalText2;
     public TMP_Text countBasketText;
     public Button basketButton;
 
@@ -93,6 +102,18 @@ public class ShopLogic : Singleton<ShopLogic>
         return newCount;
     }
 
+    public int CountCalculate(FoodData data)
+    {
+        foreach (var orderRow in order.orderRows)
+        {
+            if (orderRow.foodData == data)
+            {
+                return orderRow.count;
+            }
+        }
+        return 0;
+    }
+
     public int RemoveFromBasket(FoodData data)
     {
         int newCount = 0;
@@ -132,6 +153,7 @@ public class ShopLogic : Singleton<ShopLogic>
             order.totalPrice += orderRow.totalPriceRow;
         }
         totalText.text = order.totalPrice + " руб.";
+        totalText2.text = order.totalPrice + " руб.";
     }
 
 
@@ -165,6 +187,26 @@ public class ShopLogic : Singleton<ShopLogic>
         }
     }
 
+    private void CreateOrderElements()
+    {
+        foreach (var gm in foodDataOrderGameObjects)
+        {
+            Destroy(gm);
+        }
+
+        foodDataOrderGameObjects.Clear();
+
+        foreach (var orderRow in order.orderRows)
+        {
+            var obj = Instantiate(prefabDataElementOrder, parentDataElementOrder.transform);
+            obj.SetActive(true);
+            var dataElement = obj.GetComponent<BasketElement>();
+            dataElement.SetData(orderRow.foodData, orderRow.count);
+            foodDataOrderGameObjects.Add(obj);
+        }
+        
+    }
+
     public bool isOrderWait = false;
     public void SendFoodDataJson()
     {
@@ -173,7 +215,8 @@ public class ShopLogic : Singleton<ShopLogic>
         SendMessageOrderWait();
         isOrderWait = true;
         payButton.interactable = false;
-        readyText.text = "Ожидаение";
+        readyText.text = "Ожидайте";
+        orderStart?.Invoke();
     }
 
     public void SendMessageOrderWait(bool isOld = false)
@@ -184,11 +227,12 @@ public class ShopLogic : Singleton<ShopLogic>
         message.AddBool(isOld);
 
         NetworkManager.Instance.Client.Send(message);
+        CreateOrderElements();
     }
 
     [MessageHandler((ushort) ServerToClientId.orderNumberResponse)]
     private static void OrderNumberResponse(Message message)
     {
-        Instance.orderNumberText.text = "Номер: " + message.GetInt();
+        Instance.orderNumberText.text = "№ " + message.GetInt();
     }
 }

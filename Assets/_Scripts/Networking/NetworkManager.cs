@@ -14,6 +14,7 @@ public enum ServerToClientId : ushort
     foodReady = 3,
     loggingResponse = 4,
     orderNumberResponse = 5,
+    issuedFood = 6,
 }
 
 public enum ClientToServerId : ushort
